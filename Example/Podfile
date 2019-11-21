@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ChainUIExtension_Example' do
+  pod 'ChainUIExtension', :path => '../'
+
+  target 'ChainUIExtension_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

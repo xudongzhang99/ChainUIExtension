@@ -1,0 +1,16 @@
+PODS:
+  - ChainUIExtension (0.1.0)
+
+DEPENDENCIES:
+  - ChainUIExtension (from `../`)
+
+EXTERNAL SOURCES:
+  ChainUIExtension:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ChainUIExtension: 73d86c84deea90c1e417602e0f2dd94fd1559404
+
+PODFILE CHECKSUM: 104b06720c2b672a4ff49c533dab6f0bbac036d4
+
+COCOAPODS: 1.8.4
