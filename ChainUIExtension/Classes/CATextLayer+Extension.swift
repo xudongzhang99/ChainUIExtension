@@ -28,7 +28,6 @@ public extension CUI where Base :CATextLayer {
         return self
     }
     
-    
     /// 当文本显示不全时的裁剪方式
     ///
     /// - Parameter truncationMode: 裁剪方式

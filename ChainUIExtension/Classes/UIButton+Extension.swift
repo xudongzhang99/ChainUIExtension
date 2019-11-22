@@ -7,6 +7,7 @@
 
 import Foundation
 public extension CUI where Base :UIButton {
+    
     @discardableResult
     func title(_ text: String?, _ state: UIControl.State = .normal) -> Self {
         base.setTitle(text, for: state)
@@ -138,5 +139,6 @@ public extension CUI where Base :UIButton {
         base.setTitleColor(color, for: state)
         return self
     }
-    
 }
+
+
