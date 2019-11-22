@@ -8,18 +8,23 @@
 import Foundation
 public protocol ChainUIExtensionCompatible {
     associatedtype CompatibleType
-    var cue: Self.CompatibleType { get }
+    var cui: Self.CompatibleType { get }
 }
 
 public extension ChainUIExtensionCompatible {
-    var cue: CUE<Self> {
-        return CUE(self)
+    var cui: CUI<Self> {
+        return CUI(self)
     }
 }
 
-public final class CUE<Base> {
+public final class CUI<Base> {
     public let base: Base
+    public var end: Base {
+        return base
+    }
     public init(_ base: Base) {
         self.base = base
     }
 }
+
+extension UIView: ChainUIExtensionCompatible {}

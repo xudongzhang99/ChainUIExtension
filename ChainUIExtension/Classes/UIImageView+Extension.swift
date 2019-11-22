@@ -7,10 +7,10 @@
 
 import Foundation
 
-public extension UIImageView {
+public extension CUI where Base :UIImageView {
     @discardableResult
     func image(_ image: UIImage?, _: UIControl.State = .normal) -> Self {
-        self.image = image
+        base.image = image
         return self
     }
 
@@ -18,14 +18,14 @@ public extension UIImageView {
     func image(in bundle: Bundle? = nil, _ imageName: String, _: UIControl.State = .normal) -> Self {
       
         let image = UIImage(named: imageName, in: bundle, compatibleWith: nil)
-        self.image = image
+        base.image = image
         return self
     }
 
     @discardableResult
     func image(for aClass: AnyClass, _ imageName: String, _: UIControl.State = .normal) -> Self {
         let image = UIImage(named: imageName, in: Bundle(for: aClass), compatibleWith: nil)
-        self.image = image
+        base.image = image
         return self
     }
     
@@ -36,14 +36,14 @@ public extension UIImageView {
             return self
         }
         let image = UIImage(named: imageName, in: Bundle(path: path), compatibleWith: nil)
-        self.image = image
+        base.image = image
         return self
     }
     
     @discardableResult
     func image(_ color: UIColor, _: UIControl.State = .normal) -> Self {
         let image = UIImage.imageWithColor(color)
-        self.image = image
+        base.image = image
         return self
     }
 }

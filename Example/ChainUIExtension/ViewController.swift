@@ -7,12 +7,15 @@
 //
 
 import UIKit
-
+import ChainUIExtension
 class ViewController: UIViewController {
-
+    let label1 = UILabel().cui.font(1).color(0x123456).text("1111").backgroundColor(0x1111).end
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        UIView().cui.addGesture { (_: UITapGestureRecognizer) in
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {

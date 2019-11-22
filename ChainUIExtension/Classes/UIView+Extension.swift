@@ -95,11 +95,15 @@ public extension UIView {
 
 }
 
-extension UIView: ChainUIExtensionCompatible {}
 
-public extension CUE where Base: UIView {
+
+public extension CUI where Base: UIView {
     
-   
+   @discardableResult
+   func backgroundColor(_ hex: Int) -> Self {
+        base.backgroundColor = UIColor.hex(hex)
+        return self
+   }
     
     func radius(radius: CGFloat, corner: UIRectCorner) -> Self  {
         if #available(iOS 11.0, *) {
@@ -140,7 +144,7 @@ public extension CUE where Base: UIView {
 
 
 
-public extension CUE where Base : UIView {
+public extension CUI where Base : UIView {
     var x: CGFloat {
         get { return base.frame.origin.x }
         set(newValue) {
@@ -240,9 +244,9 @@ fileprivate struct TapKeys {
 
 
 /// - Attention: 给任意view添加 tap，先写上，如果有，再删
-public extension CUE where Base : UIView {
+public extension CUI where Base : UIView {
     
-    func addTap(numberOfTapsRequired: Int = 1, numberOfTouchesRequired: Int = 1, action block: @escaping  () -> ()) -> Self {
+    func addTap(numberOfTapsRequired: Int = 1, numberOfTouchesRequired: Int = 1, action block: @escaping  (UIGestureRecognizer) -> ()) -> Self {
         addGesture(configGesture: { (tap: UITapGestureRecognizer) in
             tap.numberOfTouchesRequired = numberOfTouchesRequired
             tap.numberOfTapsRequired = numberOfTapsRequired
@@ -250,12 +254,13 @@ public extension CUE where Base : UIView {
     }
         
     
-    
-    func addGesture<Gesture>(configGesture:(Gesture) -> Void, action block: @escaping  () -> ()) -> Self  where Gesture: UIGestureRecognizer{
+    @discardableResult
+    func addGesture<Gesture>(configGesture:((Gesture) -> Void)? = nil, action block: @escaping  (Gesture) -> ()) -> Self  where Gesture: UIGestureRecognizer{
         base.isUserInteractionEnabled = true
-        let tap = Gesture(target: base, action: #selector(UITapGestureRecognizer.onTap(_:)))
-        base.addGestureRecognizer(tap)
-        objc_setAssociatedObject(tap, &TapKeys.tapActionKey, block, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        let ges = Gesture(target: base, action: #selector(UITapGestureRecognizer.onTap(_:)))
+        configGesture?(ges)
+        base.addGestureRecognizer(ges)
+        objc_setAssociatedObject(ges, &TapKeys.tapActionKey, block, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         return self
     }
 }
@@ -264,10 +269,10 @@ public extension CUE where Base : UIView {
 
 fileprivate extension UIGestureRecognizer {
     @objc func onTap(_ tap: UITapGestureRecognizer) {
-        guard let action = objc_getAssociatedObject(tap, &TapKeys.tapActionKey) as? (() -> ())  else {
+        guard let action = objc_getAssociatedObject(tap, &TapKeys.tapActionKey) as? ((UIGestureRecognizer) -> ())  else {
             return
         }
-        action()
+        action(tap)
     }
 }
 ///// - Important: 给任意view画边框

@@ -6,53 +6,53 @@
 //
 
 import UIKit
-public extension UITableView {
+public extension CUI where Base :UITableView {
     @discardableResult
     func delegate(_ delegate: UITableViewDelegate) -> Self {
-        self.delegate = delegate
+        base.delegate = delegate
         return self
     }
     @discardableResult
     func dataSource(_ dataSource: UITableViewDataSource) -> Self {
-        self.dataSource = dataSource
+        base.dataSource = dataSource
         return self
     }
     @discardableResult
     func rowHeight(_ height: CGFloat) -> Self {
-        self.rowHeight = height
+        base.rowHeight = height
         return self
     }
     @discardableResult
     func sectionFooterHeight(_ height: CGFloat) -> Self {
-        self.sectionFooterHeight = height
+        base.sectionFooterHeight = height
         return self
     }
     @discardableResult
     func sectionHeaderHeight(_ height: CGFloat) -> Self {
-        self.sectionHeaderHeight = height
+        base.sectionHeaderHeight = height
         return self
     }
     @discardableResult
     func estimatedRowHeight(_ height: CGFloat) -> Self {
-        self.estimatedRowHeight = height
+        base.estimatedRowHeight = height
         return self
     }
     @discardableResult
     func estimatedSectionHeaderHeight(_ height: CGFloat) -> Self {
-        self.estimatedSectionHeaderHeight = height
+        base.estimatedSectionHeaderHeight = height
         return self
     }
     @discardableResult
     func estimatedSectionFooterHeight(_ height: CGFloat) -> Self {
-        self.estimatedSectionFooterHeight = height
+        base.estimatedSectionFooterHeight = height
         return self
     }
     @discardableResult
     func scroll(to indexPath: IndexPath, at scrollPosition: UITableView.ScrollPosition = .middle, animated: Bool = true) -> Self {
-        if indexPath.section < 0 || indexPath.row < 0 || indexPath.section > self.numberOfSections || indexPath.row > self.numberOfRows (inSection: indexPath.section) {
+        if indexPath.section < 0 || indexPath.row < 0 || indexPath.section > base.numberOfSections || indexPath.row > base.numberOfRows (inSection: indexPath.section) {
             return self
         }
-        scrollToRow(at: indexPath, at: scrollPosition, animated: animated)
+        base.scrollToRow(at: indexPath, at: scrollPosition, animated: animated)
         return self
     }
     @discardableResult
@@ -61,22 +61,22 @@ public extension UITableView {
     }
     @discardableResult
     func scrollToNearestSelectedRow(scrollPosition: UITableView.ScrollPosition = .middle, animated: Bool = true) -> Self {
-        scrollToNearestSelectedRow(at: scrollPosition, animated: animated)
+        base.scrollToNearestSelectedRow(at: scrollPosition, animated: animated)
         return self
     }
     @discardableResult
     func separatorStyle(_ style: UITableViewCell.SeparatorStyle = .none) -> Self {
-        self.separatorStyle = style
+        base.separatorStyle = style
         return self
     }
     @discardableResult
     func tableHeaderView(_ head: UIView?) -> Self {
-        self.tableHeaderView = head
+        base.tableHeaderView = head
         return self
     }
     @discardableResult
     func tableFooterView(_ foot: UIView?) -> Self {
-        self.tableFooterView = foot
+        base.tableFooterView = foot
         return self
     }
 }

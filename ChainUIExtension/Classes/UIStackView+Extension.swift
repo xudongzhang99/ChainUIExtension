@@ -8,43 +8,43 @@
 import UIKit
 
 @available(iOS 9.0, *)
-public extension UIStackView {
+public extension CUI where Base :UIStackView {
     
     @discardableResult
     func set(baselineRelative arrangement: Bool) -> Self {
-        isBaselineRelativeArrangement = arrangement
+        base.isBaselineRelativeArrangement = arrangement
         return self
     }
     
     @discardableResult
     func set(layoutMarginsRelative arrangement: Bool) -> Self {
-        isLayoutMarginsRelativeArrangement = arrangement
+        base.isLayoutMarginsRelativeArrangement = arrangement
         return self
     }
     
     @discardableResult
     func set(axis: NSLayoutConstraint.Axis) -> Self {
-        self.axis = axis
+        base.axis = axis
         return self
     }
     
    
     @discardableResult
     func set(distribution: UIStackView.Distribution) -> Self {
-        self.distribution = distribution
+        base.distribution = distribution
         return self
     }
     
    
     @discardableResult
     func set(alignment: UIStackView.Alignment) -> Self {
-        self.alignment = alignment
+        base.alignment = alignment
         return self
     }
     
     @discardableResult
     func set(spacing: CGFloat) -> Self {
-        self.spacing = spacing
+        base.spacing = spacing
         return self
     }
 
@@ -52,7 +52,7 @@ public extension UIStackView {
     func addArrangedSubviews(_ items: UIView...) -> Self {
         if items.isEmpty { return self }
         for i in 0..<items.count {
-            addArrangedSubview(items[i])
+            base.addArrangedSubview(items[i])
         }
         return self
     }

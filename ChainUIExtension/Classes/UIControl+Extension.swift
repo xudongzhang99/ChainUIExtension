@@ -7,41 +7,41 @@
 
 import Foundation
 import UIKit
-extension UIControl {
+public extension CUI where Base : UIControl {
     @discardableResult
     func isEnabled(_ isEnabled: Bool) -> Self {
-        self.isEnabled = isEnabled
+        base.isEnabled = isEnabled
         return self
     }
     @discardableResult
     func isSelected(_ isSelected: Bool) -> Self {
-        self.isSelected = isSelected
+        base.isSelected = isSelected
         return self
     }
     
     @discardableResult
     func isHighlighted(_ isSelected: Bool) -> Self {
-        self.isHighlighted = isSelected
+        base.isHighlighted = isSelected
         return self
     }
     @discardableResult
     func contentVerticalAlignment(_ contentVerticalAlignment: UIControl.ContentVerticalAlignment) -> Self {
-        self.contentVerticalAlignment = contentVerticalAlignment
+        base.contentVerticalAlignment = contentVerticalAlignment
         return self
     }
     @discardableResult
     func contentHorizontalAlignment(_ contentHorizontalAlignment: UIControl.ContentHorizontalAlignment) -> Self {
-        self.contentHorizontalAlignment = contentHorizontalAlignment
+        base.contentHorizontalAlignment = contentHorizontalAlignment
         return self
     }
     @discardableResult
     func add(_ target: Any?, action: Selector, events: UIControl.Event = .touchUpInside) -> Self {
-        self.addTarget(target, action: action, for: events)
+        base.addTarget(target, action: action, for: events)
         return self
     }
     @discardableResult
     func remove(_ target: Any?, action: Selector, events: UIControl.Event = .touchUpInside) -> Self {
-        self.removeTarget(target, action: action, for: events)
+        base.removeTarget(target, action: action, for: events)
         return self
     }
 }

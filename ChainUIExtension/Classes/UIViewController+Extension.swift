@@ -8,7 +8,7 @@
 import UIKit
 
 
-public extension UIViewController {
+public extension CUI where Base :UIViewController {
     static func top() -> UIViewController? {
         var rootVC: UIViewController?
         if let window = UIApplication.shared.delegate?.window {

@@ -7,111 +7,115 @@
 
 import Foundation
 
-public extension CALayer {
+public extension CUI where Base :CALayer {
+    
     @discardableResult
     func corner(_ cornerRadius: CGFloat) -> Self {
-        self.cornerRadius = cornerRadius
-        masksToBounds = true
+        base.cornerRadius = cornerRadius
+        base.masksToBounds = true
         return self
     }
     
-    
     @discardableResult
     func backgroundColor(_ color: UIColor) -> Self {
-        backgroundColor = color.cgColor
+        base.backgroundColor = color.cgColor
         return self
     }
     
     @discardableResult
     func backgroundColor(_ hex: Int) -> Self {
-        backgroundColor = UIColor.hex(hex).cgColor
+        base.backgroundColor = UIColor.hex(hex).cgColor
         return self
     }
     
     @discardableResult
     func frame(_ frame: CGRect) -> Self {
-        self.frame = frame
+        base.frame = frame
         return self
     }
     
     @discardableResult
     func addTo(_ superView: UIView) -> Self {
-        superView.layer.addSublayer(self)
+        superView.layer.addSublayer(base)
         return self
     }
+    
     @discardableResult
     func addTo(_ superLayer: CALayer) -> Self {
-        superLayer.addSublayer(self)
+        superLayer.addSublayer(base)
         return self
     }
+    
     @discardableResult
     func isHidden(_ isHidden: Bool) -> Self {
-        self.isHidden = isHidden
+        base.isHidden = isHidden
         return self
     }
+    
     @discardableResult
     func borderWidth(_ width: CGFloat) -> Self {
-        self.borderWidth = width
+        base.borderWidth = width
         return self
     }
     
     @discardableResult
     func borderColor(_ color: UIColor) -> Self {
-        self.borderColor = color.cgColor
+        base.borderColor = color.cgColor
         return self
     }
     
     /// 是否开启光栅化
     @discardableResult
     func shouldRasterize(_ rasterize: Bool) -> Self {
-        self.shouldRasterize = rasterize
+        base.shouldRasterize = rasterize
         return self
     }
     
     /// 开启光栅化比例
     @discardableResult
     func rasterizationScale(_ scale: CGFloat) -> Self {
-        self.rasterizationScale = scale
-        self.shouldRasterize = true
+        base.rasterizationScale = scale
+        base.shouldRasterize = true
         return self
     }
     
     /// 阴影颜色
     @discardableResult
     func shadowColor(_ color: UIColor) -> Self {
-        self.shadowColor = color.cgColor
+        base.shadowColor = color.cgColor
         return self
     }
     
     /// 阴影的透明度
     @discardableResult
     func shadowOpacity(_ opacity: Float) -> Self {
-        self.shadowOpacity = opacity
+        base.shadowOpacity = opacity
         return self
     }
     
     /// 阴影偏移量
     @discardableResult
     func shadowOffset(_ offset: CGSize) -> Self {
-        self.shadowOffset = offset
+        base.shadowOffset = offset
         return self
     }
     /// 阴影圆角
     @discardableResult
     func shadowRadius(_ radius: CGFloat) -> Self {
-        self.shadowRadius = radius
+        base.shadowRadius = radius
         return self
     }
     /// 阴影偏移量
     @discardableResult
     func shadowPath(_ path: CGPath) -> Self {
-        self.shadowPath = path
+        base.shadowPath = path
         return self
     }
     
 }
+
 /// - Important: UI conveniently
-public extension CUE where Base : CALayer {
+public extension CUI where Base : CALayer {
     var x: CGFloat {
         get { return base.frame.origin.x }
         set(newValue) {
